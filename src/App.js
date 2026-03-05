@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./App.css";
 import RepetitionExercise from "./components/RepetitionExercise";
 import DurationExercise from "./components/DurationExercise";
+import RunningExercise from "./components/RunningExercise";
 
 const EXERCISES = [
   { name: "Push Ups", type: "repetition" },
-  { name: "Running", type: "duration" },
+  { name: "Running", type: "running" },
   { name: "Plank", type: "duration" },
 ];
 
@@ -40,15 +41,21 @@ export default function App() {
   // =========================
   // SCREEN 2: EXERCISE SCREEN
   // =========================
-  return (
-    <div className="page">
-      <div className="content">
-        {selectedExercise.type === "repetition" ? (
-          <RepetitionExercise name={selectedExercise.name} />
-        ) : (
-          <DurationExercise name={selectedExercise.name} />
-        )}
-      </div>
+return (
+  <div className="page">
+    <div className="content">
+      {selectedExercise.type === "repetition" && (
+        <RepetitionExercise name={selectedExercise.name} />
+      )}
+
+      {selectedExercise.type === "duration" && (
+        <DurationExercise name={selectedExercise.name} />
+      )}
+
+      {selectedExercise.type === "running" && (
+        <RunningExercise name={selectedExercise.name} />
+      )}
+    </div>
 
       {/* Home button at bottom */}
       <button
